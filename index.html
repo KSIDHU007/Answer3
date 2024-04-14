@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meown Blog</title>
+  <link rel="stylesheet" href="style2.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>Meown Blog</h1>
+  <nav>
+    <a href="index.html">Blog</a>
+    <a href="Contact.html">Contact Us</a>
+    <a href="Services.html">Services</a>
+  </nav>
+</header>
+
+<div class="container" id="blog">
+  <h2>Blog</h2>
+  <ul id="blog-posts">
+  </ul>
+</div>
+
+<footer>
+  <p>Made by &copy; Sidhu.</p>
+</footer>
+
+<script>
+$(document).ready(function(){
+  // Use $.getJSON() to fetch JSON data
+  $.getJSON("data.json", function(data) {
+    // Clear existing content of #blog-posts element
+    $("#blog-posts").html('');
+
+    // Iterate through each post in the JSON data
+    $.each(data.posts, function(index, post) {
+      // Append the post title and content to #blog-posts
+      $("#blog-posts").append("<h3>" + post.title + "</h3><p>" + post.content + "</p>");
+    });
+  });
+});
+</script>
+
+</body>
+</html>
